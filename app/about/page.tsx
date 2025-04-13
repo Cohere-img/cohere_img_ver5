@@ -10,13 +10,11 @@ import Footer from "../_components/Footer";
 
 export default function Home() {
     useEffect(() => {
-        const canvas = document.getElementById(
-            "three-canvas"
-        ) as HTMLCanvasElement;
-
-        if (!canvas) return;
-
-        const { scene, camera, renderer, composer } = initThreeScene(canvas);
+        const init = async () => {
+          if (!canvasRef.current) return;
+      
+          const canvas = canvasRef.current;
+          const { scene, camera, renderer, composer } = await initThreeScene(canvas);
 
         addAmbientLight(scene);
         addDirectionalLight(scene);
