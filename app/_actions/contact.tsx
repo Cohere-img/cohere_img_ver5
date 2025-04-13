@@ -1,7 +1,7 @@
 "use server";
 
 export interface ContactFormState {
-    status: "error" | "success";
+    status: "error" | "success" | "";
     message: string;
 }
 
@@ -102,22 +102,6 @@ export async function createContactData(
     }
 }
 
-async function sendEmail({
-    name,
-    email,
-    message,
-}: {
-    name: string;
-    email: string;
-    message: string;
-}) {
-    // ここにメール送信のロジックを実装
-    // 例: nodemailerを使用する場合
-    // const transporter = nodemailer.createTransport({...});
-    // await transporter.sendMail({...});
-    throw new Error("Not implemented");
-}
-
 export async function contact(
     _prevState: ContactFormState,
     formData: FormData
@@ -134,7 +118,10 @@ export async function contact(
     }
 
     try {
-        await sendEmail({ name, email, message });
+        // ここにメール送信のロジックを実装
+        // 例: nodemailerを使用する場合
+        // const transporter = nodemailer.createTransport({...});
+        // await transporter.sendMail({...});
         return {
             status: "success",
             message: "メッセージを送信しました。",

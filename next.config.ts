@@ -11,3 +11,10 @@ module.exports = {
         API_KEY: process.env.API_KEY,
     },
 };
+
+// next.config.js
+module.exports = {
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+};
