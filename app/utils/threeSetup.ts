@@ -1,12 +1,6 @@
 import * as THREE from "three";
-import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
-import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
-import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
-import { BokehPass } from "three/examples/jsm/postprocessing/BokehPass";
-import { VignetteShader } from "three/examples/jsm/shaders/VignetteShader";
-import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass";
 
-export const initThreeScene = (canvas: HTMLCanvasElement) => {
+export const initThreeScene = async (canvas: HTMLCanvasElement) => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
         75,
@@ -21,6 +15,13 @@ export const initThreeScene = (canvas: HTMLCanvasElement) => {
     camera.position.z = 5;
 
     scene.fog = new THREE.Fog(0xc2c2c2, 90, 100);
+
+    const { EffectComposer } = await import("three/examples/jsm/postprocessing/EffectComposer");
+    const { RenderPass } = await import("three/examples/jsm/postprocessing/RenderPass");
+    const { UnrealBloomPass } = await import("three/examples/jsm/postprocessing/UnrealBloomPass");
+    const { BokehPass } = await import("three/examples/jsm/postprocessing/BokehPass");
+    const { VignetteShader } = await import("three/examples/jsm/shaders/VignetteShader");
+    const { ShaderPass } = await import("three/examples/jsm/postprocessing/ShaderPass");
 
     const composer = new EffectComposer(renderer);
     const renderPass = new RenderPass(scene, camera);
