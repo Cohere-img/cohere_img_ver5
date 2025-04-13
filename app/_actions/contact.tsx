@@ -1,6 +1,6 @@
 "use server";
 
-interface ContactFormState {
+export interface ContactFormState {
     status: "error" | "success";
     message: string;
 }
@@ -8,7 +8,7 @@ interface ContactFormState {
 export async function createContactData(
     _prevState: ContactFormState,
     formData: FormData
-) {
+): Promise<ContactFormState> {
     const rawFormData = {
         firstname: formData.get("firstname") as string,
         company_name: formData.get("company_name") as string,
@@ -47,50 +47,59 @@ export async function createContactData(
             message: "ERROR メッセージを入力してください",
         };
     }
-    const result = await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTAL_ID}/${process.env.HUBSPOT_FORM_ID}`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                fields: [
-                    {
-                        objectTypeId: "0-1",
-                        name: "firstname",
-                        value: rawFormData.firstname,
-                    },
-                    {
-                        objectTypeId: "0-1",
-                        name: "company_name",
-                        value: rawFormData.company_name,
-                    },
-                    {
-                        objectTypeId: "0-1",
-                        name: "email",
-                        value: rawFormData.email,
-                    },
-                    {
-                        objectTypeId: "0-1",
-                        name: "web_site_url",
-                        value: rawFormData.web_site_url,
-                    },
-                    {
-                        objectTypeId: "0-1",
-                        name: "comment",
-                        value: rawFormData.comment,
-                    },
-                ],
-            }),
-        }
-    );
 
-    console.log("HubSpot response status:", result.status);
-    const responseBody = await result.text();
-    console.log("HubSpot response body:", responseBody);
+    try {
+        const result = await fetch(
+            `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTAL_ID}/${process.env.HUBSPOT_FORM_ID}`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    fields: [
+                        {
+                            objectTypeId: "0-1",
+                            name: "firstname",
+                            value: rawFormData.firstname,
+                        },
+                        {
+                            objectTypeId: "0-1",
+                            name: "company_name",
+                            value: rawFormData.company_name,
+                        },
+                        {
+                            objectTypeId: "0-1",
+                            name: "email",
+                            value: rawFormData.email,
+                        },
+                        {
+                            objectTypeId: "0-1",
+                            name: "web_site_url",
+                            value: rawFormData.web_site_url,
+                        },
+                        {
+                            objectTypeId: "0-1",
+                            name: "comment",
+                            value: rawFormData.comment,
+                        },
+                    ],
+                }),
+            }
+        );
 
-    return { status: "success", message: "SUCCESS" };
+        console.log("HubSpot response status:", result.status);
+        const responseBody = await result.text();
+        console.log("HubSpot response body:", responseBody);
+
+        return { status: "success", message: "SUCCESS" };
+    } catch (error) {
+        console.error("Failed to submit form:", error);
+        return {
+            status: "error",
+            message: "フォームの送信に失敗しました。",
+        };
+    }
 }
 
 async function sendEmail({

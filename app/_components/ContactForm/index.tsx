@@ -1,16 +1,19 @@
 "use client";
 
-import { createContactData } from "@/app/_actions/contact";
+import { createContactData, ContactFormState } from "@/app/_actions/contact";
 import { useActionState } from "react";
 import styles from "./index.module.css";
 
-const initialState = {
+const initialState: ContactFormState = {
     status: "",
     message: "",
 };
 
 export default function ContactForm() {
-    const [state, formAction] = useActionState(createContactData, initialState);
+    const [state, formAction] = useActionState<ContactFormState, FormData>(
+        createContactData,
+        initialState
+    );
     console.log(state);
     if (state.status === "success") {
         return (
