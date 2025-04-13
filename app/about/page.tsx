@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./page.module.css";
 import Header from "../_components/Header";
 import { initThreeScene } from "../utils/threeSetup";
@@ -9,6 +9,7 @@ import { createFineParticles, animateParticles } from "../utils/particles";
 import Footer from "../_components/Footer";
 
 export default function Home() {
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
     useEffect(() => {
         const init = async () => {
             if (!canvasRef.current) return;
@@ -104,7 +105,7 @@ export default function Home() {
                             </div>
                         </div>
                         <div className={styles.philosophyRightArea}>
-                            <canvas id="three-canvas"></canvas>
+                            <canvas id="three-canvas" ref={canvasRef}></canvas>
                         </div>
                     </div>
                 </section>
