@@ -7,6 +7,7 @@ export interface ContactFormState {
 
 export async function createContactData(
     _prevState: ContactFormState,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     formData: FormData
 ): Promise<ContactFormState> {
     const rawFormData = {
