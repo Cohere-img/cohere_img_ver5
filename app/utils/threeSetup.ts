@@ -16,12 +16,30 @@ export const initThreeScene = async (canvas: HTMLCanvasElement) => {
 
     scene.fog = new THREE.Fog(0xc2c2c2, 90, 100);
 
-    const { EffectComposer } = await import("three/examples/jsm/postprocessing/EffectComposer");
-    const { RenderPass } = await import("three/examples/jsm/postprocessing/RenderPass");
-    const { UnrealBloomPass } = await import("three/examples/jsm/postprocessing/UnrealBloomPass");
-    const { BokehPass } = await import("three/examples/jsm/postprocessing/BokehPass");
-    const { VignetteShader } = await import("three/examples/jsm/shaders/VignetteShader");
-    const { ShaderPass } = await import("three/examples/jsm/postprocessing/ShaderPass");
+    // @ts-ignore
+    const { EffectComposer } = await import(
+        "three/examples/jsm/postprocessing/EffectComposer"
+    );
+    // @ts-ignore
+    const { RenderPass } = await import(
+        "three/examples/jsm/postprocessing/RenderPass"
+    );
+    // @ts-ignore
+    const { UnrealBloomPass } = await import(
+        "three/examples/jsm/postprocessing/UnrealBloomPass"
+    );
+    // @ts-ignore
+    const { BokehPass } = await import(
+        "three/examples/jsm/postprocessing/BokehPass"
+    );
+    // @ts-ignore
+    const { VignetteShader } = await import(
+        "three/examples/jsm/shaders/VignetteShader"
+    );
+    // @ts-ignore
+    const { ShaderPass } = await import(
+        "three/examples/jsm/postprocessing/ShaderPass"
+    );
 
     const composer = new EffectComposer(renderer);
     const renderPass = new RenderPass(scene, camera);
