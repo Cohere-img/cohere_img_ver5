@@ -95,10 +95,3 @@ export default function ContactForm() {
         </form>
     );
 }
-
-// next.config.js
-module.exports = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-};
