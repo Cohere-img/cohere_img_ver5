@@ -31,6 +31,12 @@ export default function Home() {
         };
 
         fetchData();
+
+        return () => {
+            // クリーンアップ処理
+            setWorks(null);
+            setLoading(true);
+        };
     }, []);
 
     if (loading) {

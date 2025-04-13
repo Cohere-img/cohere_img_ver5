@@ -11,61 +11,65 @@ import Footer from "../_components/Footer";
 export default function Home() {
     useEffect(() => {
         const init = async () => {
-          if (!canvasRef.current) return;
-      
-          const canvas = canvasRef.current;
-          const { scene, camera, renderer, composer } = await initThreeScene(canvas);
+            if (!canvasRef.current) return;
 
-        addAmbientLight(scene);
-        addDirectionalLight(scene);
+            const canvas = canvasRef.current;
+            const { scene, camera, renderer, composer } = await initThreeScene(
+                canvas
+            );
 
-        const torus = createTorus(scene);
-        const cylinder = createCylinder(scene);
-        createGlow(scene, cylinder);
+            addAmbientLight(scene);
+            addDirectionalLight(scene);
 
-        const fineParticles = createFineParticles(scene);
+            const torus = createTorus(scene);
+            const cylinder = createCylinder(scene);
+            createGlow(scene, cylinder);
 
-        const animate = () => {
-            requestAnimationFrame(animate);
+            const fineParticles = createFineParticles(scene);
 
-            animateParticles(fineParticles);
+            const animate = () => {
+                requestAnimationFrame(animate);
 
-            const time = Date.now();
-            const minAngleX = (-65 * Math.PI) / 180;
-            const maxAngleX = (-5 * Math.PI) / 180;
-            const minAngleY = (5 * Math.PI) / 180;
-            const maxAngleY = (65 * Math.PI) / 180;
+                animateParticles(fineParticles);
 
-            const waveSpeedX = 0.2;
-            const waveSpeedY = 0.1;
+                const time = Date.now();
+                const minAngleX = (-65 * Math.PI) / 180;
+                const maxAngleX = (-5 * Math.PI) / 180;
+                const minAngleY = (5 * Math.PI) / 180;
+                const maxAngleY = (65 * Math.PI) / 180;
 
-            torus.rotation.x =
-                minAngleX +
-                ((Math.sin(time * 0.001 * waveSpeedX) + 1) / 2) *
-                    (maxAngleX - minAngleX);
-            torus.rotation.y =
-                minAngleY +
-                ((Math.sin(time * 0.001 * waveSpeedY) + 1) / 2) *
-                    (maxAngleY - minAngleY);
+                const waveSpeedX = 0.2;
+                const waveSpeedY = 0.1;
 
-            torus.rotation.z += 0.005;
+                torus.rotation.x =
+                    minAngleX +
+                    ((Math.sin(time * 0.001 * waveSpeedX) + 1) / 2) *
+                        (maxAngleX - minAngleX);
+                torus.rotation.y =
+                    minAngleY +
+                    ((Math.sin(time * 0.001 * waveSpeedY) + 1) / 2) *
+                        (maxAngleY - minAngleY);
 
-            composer.render();
+                torus.rotation.z += 0.005;
+
+                composer.render();
+            };
+
+            animate();
+
+            const handleResize = () => {
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                composer.setSize(window.innerWidth, window.innerHeight);
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+            };
+
+            window.addEventListener("resize", handleResize);
+            return () => {
+                window.removeEventListener("resize", handleResize);
+            };
         };
-
-        animate();
-
-        const handleResize = () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            composer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        };
-
-        window.addEventListener("resize", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
+        init();
     }, []);
     return (
         <>
