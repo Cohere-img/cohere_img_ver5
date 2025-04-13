@@ -1,5 +1,4 @@
 import styles from "./page.module.css";
-import Link from "next/link";
 import Header from "../_components/Header";
 import Footer from "../_components/Footer";
 import ContactForm from "../_components/ContactForm";

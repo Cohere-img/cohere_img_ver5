@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { client, Work } from "../../../libs/client";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./WorksMiniList.module.css";
 
 export default function WorksMiniList() {
@@ -97,24 +98,14 @@ export default function WorksMiniList() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.worksImg}>
-                                <Link
-                                    href={`/works/${work.id}`}
-                                    className={`selectArea ${styles.selectArea}`}
-                                    onClick={(e) => {
-                                        console.log(
-                                            `Navigating to /works/${work.id}`
-                                        );
-                                        // クリックイベントの伝播を停止
-                                        e.stopPropagation();
-                                    }}
-                                >
-                                    <img
-                                        src={work.eyechatch.url}
-                                        alt={work.title}
-                                        width="100%"
-                                    />
-                                </Link>
+                            <div className={styles.worksThumbnail}>
+                                <Image
+                                    src={work.eyechatch.url}
+                                    alt={work.title}
+                                    width={300}
+                                    height={200}
+                                    className={styles.thumbnail}
+                                />
                             </div>
                         </div>
                     </article>

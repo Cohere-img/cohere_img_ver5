@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Footer.module.css";
-import { Html } from "next/document";
 
 export default function Footer() {
     return (
@@ -16,10 +15,11 @@ export default function Footer() {
                 </div>
                 <div className={styles.footerLogoArea}>
                     <Link href="/">
-                        <img
+                        <Image
                             src="/svgs/footerLogo.svg"
                             alt="footerLogo"
-                            width="100%"
+                            width={100}
+                            height={100}
                             className={styles.footerLogo}
                         />
                     </Link>

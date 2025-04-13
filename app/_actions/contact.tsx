@@ -1,11 +1,14 @@
 "use server";
 
-function validateEmail(email: string) {
-    const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return pattern.test(email);
+interface ContactFormState {
+    status: "error" | "success";
+    message: string;
 }
 
-export async function createContactData(_prevState: any, formData: FormData) {
+export async function createContactData(
+    _prevState: ContactFormState,
+    formData: FormData
+) {
     const rawFormData = {
         firstname: formData.get("firstname") as string,
         company_name: formData.get("company_name") as string,
@@ -88,4 +91,50 @@ export async function createContactData(_prevState: any, formData: FormData) {
     console.log("HubSpot response body:", responseBody);
 
     return { status: "success", message: "SUCCESS" };
+}
+
+async function sendEmail({
+    name,
+    email,
+    message,
+}: {
+    name: string;
+    email: string;
+    message: string;
+}) {
+    // ここにメール送信のロジックを実装
+    // 例: nodemailerを使用する場合
+    // const transporter = nodemailer.createTransport({...});
+    // await transporter.sendMail({...});
+    throw new Error("Not implemented");
+}
+
+export async function contact(
+    _prevState: ContactFormState,
+    formData: FormData
+): Promise<ContactFormState> {
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
+
+    if (!name || !email || !message) {
+        return {
+            status: "error",
+            message: "すべてのフィールドを入力してください。",
+        };
+    }
+
+    try {
+        await sendEmail({ name, email, message });
+        return {
+            status: "success",
+            message: "メッセージを送信しました。",
+        };
+    } catch (error) {
+        console.error("Failed to send email:", error);
+        return {
+            status: "error",
+            message: "メッセージの送信に失敗しました。",
+        };
+    }
 }

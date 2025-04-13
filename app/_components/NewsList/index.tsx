@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { client, News } from "../../../libs/client";
+import { client, Topic } from "../../../libs/client";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./NewsList.module.css";
 
 export default function NewsList() {
-    const [newsItems, setNewsItems] = useState<News[] | null>(null);
+    const [newsItems, setNewsItems] = useState<Topic[] | null>(null);
     const [loading, setLoading] = useState(true);
     const [hasMore, setHasMore] = useState(true);
     const [offset, setOffset] = useState(0);
@@ -29,12 +30,12 @@ export default function NewsList() {
         const fetchNews = async () => {
             try {
                 setLoading(true);
-                const data = await client.getList<News>({
+                const data = await client.getList<Topic>({
                     endpoint: "news",
                     queries: { limit: 10, offset: offset },
                 });
 
-                let newNews = data.contents;
+                const newNews = data.contents;
 
                 if (offset === 0) {
                     setNewsItems(newNews);
@@ -98,18 +99,27 @@ export default function NewsList() {
                                         <p>Date</p>
                                         <p>
                                             {new Date(newsItem.createdAt)
-                                                .toISOString()
-                                                .split("T")[0]
-                                                .replace(/-/g, "/")}
+                                                .toLocaleDateString("ja-JP", {
+                                                    year: "numeric",
+                                                    month: "2-digit",
+                                                    day: "2-digit",
+                                                })
+                                                .replace(/\//g, ".")}
                                         </p>
+                                    </div>
+                                    <div className={styles.category}>
+                                        <p>Category</p>
+                                        <p>{newsItem.category.name}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.newsImg}>
-                                <img
+                            <div className={styles.newsThumbnail}>
+                                <Image
                                     src={newsItem.poster.url}
                                     alt={newsItem.title}
-                                    width="100%"
+                                    width={300}
+                                    height={200}
+                                    className={styles.thumbnail}
                                 />
                             </div>
                         </Link>

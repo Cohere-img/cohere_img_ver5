@@ -1,8 +1,6 @@
 "use client";
-import { useEffect } from "react"; // ← useEffectをインポート
-import Image from "next/image";
+import { useEffect } from "react";
 import styles from "./page.module.css";
-import Link from "next/link";
 import Header from "../_components/Header";
 import { initThreeScene } from "../utils/threeSetup";
 import { addAmbientLight, addDirectionalLight } from "../utils/lights";
@@ -103,11 +101,8 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className={`mask ${styles.philosophyImg}`}>
-                            <canvas
-                                id="three-canvas"
-                                className={styles.canvas}
-                            ></canvas>
+                        <div className={styles.philosophyRightArea}>
+                            <canvas id="three-canvas"></canvas>
                         </div>
                     </div>
                 </section>

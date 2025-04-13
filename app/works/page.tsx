@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
-import Link from "next/link";
 import Header from "../_components/Header";
 import WorksList from "../_components/WorksList/index";
 import Footer from "../_components/Footer";

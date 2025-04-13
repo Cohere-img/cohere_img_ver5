@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { client, Work } from "../../../libs/client";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./WorksList.module.css";
 
 interface WorksListProps {
@@ -102,6 +103,10 @@ export default function WorksList({
         fetchWorks();
     }, [offset, selectedCategory]);
 
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
     if (!works || works.length === 0) {
         return <p>No works found.</p>;
     }
@@ -109,17 +114,6 @@ export default function WorksList({
     return (
         <div className={styles.worksItemBox}>
             {works.map((work, index) => {
-                const categoryMap: { [key: string]: string } = {
-                    web: "Web",
-                    logo_vi: "Logo / VI",
-                    graphic: "Graphic",
-                    visual_content: "Visual / Contents",
-                };
-                const categoryName =
-                    work.category?.id && categoryMap[work.category.id]
-                        ? categoryMap[work.category.id]
-                        : "カテゴリなし";
-
                 // 最後の要素にrefを設定
                 const ref =
                     index === works.length - 1 ? lastWorkElementRef : null;
@@ -132,12 +126,7 @@ export default function WorksList({
                     >
                         <Link
                             href={`/works/${work.id}`}
-                            className={`selectArea ${styles.selectArea}`}
-                            onClick={(e) => {
-                                console.log(`Navigating to /works/${work.id}`);
-                                // クリックイベントの伝播を停止
-                                e.stopPropagation();
-                            }}
+                            className={styles.selectArea}
                         >
                             <div className={styles.worksInfo}>
                                 <div className={styles.worksItemTitle}>
@@ -146,33 +135,27 @@ export default function WorksList({
                                 <div className={styles.worksData}>
                                     <div className={styles.date}>
                                         <p>Date</p>
-                                        <p>
-                                            {new Date(work.date)
-                                                .toISOString()
-                                                .split("T")[0]
-                                                .split("-")
-                                                .slice(0, 2)
-                                                .join("/")}
-                                        </p>
+                                        <p>{work.date}</p>
                                     </div>
                                     <div className={styles.category}>
                                         <p>Category</p>
-                                        <p>{categoryName}</p>
+                                        <p>{work.category?.name}</p>
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.worksImg}>
-                                <img
+                            <div className={styles.worksThumbnail}>
+                                <Image
                                     src={work.eyechatch.url}
                                     alt={work.title}
-                                    width="100%"
+                                    width={300}
+                                    height={200}
+                                    className={styles.thumbnail}
                                 />
                             </div>
                         </Link>
                     </article>
                 );
             })}
-            {loading && <p>Loading more works...</p>}
         </div>
     );
 }

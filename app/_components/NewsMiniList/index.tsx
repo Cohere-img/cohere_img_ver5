@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./NewsMiniList.module.css";
-import { getNews, News } from "@/libs/client";
+import { getNews, Topic } from "@/libs/client";
 
 export default function NewsMiniList() {
-    const [newsItems, setNewsItems] = useState<News[]>([]);
+    const [newsItems, setNewsItems] = useState<Topic[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -42,18 +43,22 @@ export default function NewsMiniList() {
                             className={styles.NewsList}
                         >
                             <div className={styles.newsImg}>
-                                <img
+                                <Image
                                     src={news.poster.url}
                                     alt={news.title}
-                                    width="100%"
+                                    width={300}
+                                    height={200}
                                 />
                             </div>
                             <div className={styles.newsDate}>
                                 <p>
                                     {new Date(news.createdAt)
-                                        .toISOString()
-                                        .split("T")[0]
-                                        .replace(/-/g, "/")}
+                                        .toLocaleDateString("ja-JP", {
+                                            year: "numeric",
+                                            month: "2-digit",
+                                            day: "2-digit",
+                                        })
+                                        .replace(/\//g, ".")}
                                 </p>
                             </div>
                             <div className={styles.newsItemTitle}>
