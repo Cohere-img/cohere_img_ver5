@@ -14,64 +14,68 @@ import Footer from "./_components/Footer";
 
 export default function Home() {
     useEffect(() => {
-        const canvas = document.getElementById(
-            "three-canvas"
-        ) as HTMLCanvasElement;
+        const init = async () => {
+            const canvas = document.getElementById(
+                "three-canvas"
+            ) as HTMLCanvasElement;
+            if (!canvas) return;
 
-        if (!canvas) return;
+            const { scene, camera, renderer, composer } = await initThreeScene(
+                canvas
+            );
 
-        const { scene, camera, renderer, composer } = initThreeScene(canvas);
+            addAmbientLight(scene);
+            addDirectionalLight(scene);
 
-        addAmbientLight(scene);
-        addDirectionalLight(scene);
+            const torus = createTorus(scene);
+            const cylinder = createCylinder(scene);
+            createGlow(scene, cylinder);
 
-        const torus = createTorus(scene);
-        const cylinder = createCylinder(scene);
-        createGlow(scene, cylinder);
+            const fineParticles = createFineParticles(scene);
 
-        const fineParticles = createFineParticles(scene);
+            const animate = () => {
+                requestAnimationFrame(animate);
 
-        const animate = () => {
-            requestAnimationFrame(animate);
+                animateParticles(fineParticles);
 
-            animateParticles(fineParticles);
+                const time = Date.now();
+                const minAngleX = (-65 * Math.PI) / 180;
+                const maxAngleX = (-5 * Math.PI) / 180;
+                const minAngleY = (5 * Math.PI) / 180;
+                const maxAngleY = (65 * Math.PI) / 180;
 
-            const time = Date.now();
-            const minAngleX = (-65 * Math.PI) / 180;
-            const maxAngleX = (-5 * Math.PI) / 180;
-            const minAngleY = (5 * Math.PI) / 180;
-            const maxAngleY = (65 * Math.PI) / 180;
+                const waveSpeedX = 0.2;
+                const waveSpeedY = 0.1;
 
-            const waveSpeedX = 0.2;
-            const waveSpeedY = 0.1;
+                torus.rotation.x =
+                    minAngleX +
+                    ((Math.sin(time * 0.001 * waveSpeedX) + 1) / 2) *
+                        (maxAngleX - minAngleX);
+                torus.rotation.y =
+                    minAngleY +
+                    ((Math.sin(time * 0.001 * waveSpeedY) + 1) / 2) *
+                        (maxAngleY - minAngleY);
 
-            torus.rotation.x =
-                minAngleX +
-                ((Math.sin(time * 0.001 * waveSpeedX) + 1) / 2) *
-                    (maxAngleX - minAngleX);
-            torus.rotation.y =
-                minAngleY +
-                ((Math.sin(time * 0.001 * waveSpeedY) + 1) / 2) *
-                    (maxAngleY - minAngleY);
+                torus.rotation.z += 0.005;
 
-            torus.rotation.z += 0.005;
+                composer.render();
+            };
 
-            composer.render();
+            animate();
+
+            const handleResize = () => {
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                composer.setSize(window.innerWidth, window.innerHeight);
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+            };
+
+            window.addEventListener("resize", handleResize);
+            return () => {
+                window.removeEventListener("resize", handleResize);
+            };
         };
-
-        animate();
-
-        const handleResize = () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            composer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        };
-
-        window.addEventListener("resize", handleResize);
-        return () => {
-            window.removeEventListener("resize", handleResize);
-        };
+        init();
     }, []);
     return (
         <>
