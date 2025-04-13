@@ -17,27 +17,27 @@ export const initThreeScene = async (canvas: HTMLCanvasElement) => {
     scene.fog = new THREE.Fog(0xc2c2c2, 90, 100);
 
     // @ts-ignore
-    const { EffectComposer } = await import(
+    const { EffectComposer }: any = await import(
         "three/examples/jsm/postprocessing/EffectComposer"
     );
     // @ts-ignore
-    const { RenderPass } = await import(
+    const { RenderPass }: any = await import(
         "three/examples/jsm/postprocessing/RenderPass"
     );
     // @ts-ignore
-    const { UnrealBloomPass } = await import(
+    const { UnrealBloomPass }: any = await import(
         "three/examples/jsm/postprocessing/UnrealBloomPass"
     );
     // @ts-ignore
-    const { BokehPass } = await import(
+    const { BokehPass }: any = await import(
         "three/examples/jsm/postprocessing/BokehPass"
     );
     // @ts-ignore
-    const { VignetteShader } = await import(
+    const { VignetteShader }: any = await import(
         "three/examples/jsm/shaders/VignetteShader"
     );
     // @ts-ignore
-    const { ShaderPass } = await import(
+    const { ShaderPass }: any = await import(
         "three/examples/jsm/postprocessing/ShaderPass"
     );
 
