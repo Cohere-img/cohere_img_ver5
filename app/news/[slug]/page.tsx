@@ -4,12 +4,12 @@ import Link from "next/link";
 import Header from "../../_components/Header";
 import Footer from "../../_components/Footer";
 
-export default async function TopicsPage({
-    params,
-}: {
-    params: { slug: string };
-}) {
-    const { slug } = params;
+export default async function TopicsPage(props: any) {
+    const { slug } = props.params;
+
+    if (!slug) {
+        return <p>Error: Missing slug</p>;
+    }
 
     try {
         // データを並行して取得
