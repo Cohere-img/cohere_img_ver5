@@ -2,7 +2,6 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Header from "../_components/Header";
-import TextLoop from "../_components/TextLoop";
 import Footer from "../_components/Footer";
 
 export default function Home() {
