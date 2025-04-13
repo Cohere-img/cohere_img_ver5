@@ -4,17 +4,12 @@ import Link from "next/link";
 import Header from "../../_components/Header";
 import Footer from "../../_components/Footer";
 
-type PageProps = {
-    params: {
-        slug: string;
-    };
-};
-export default async function TopicsPage({ params }: PageProps) {
+export default async function TopicsPage({
+    params,
+}: {
+    params: { slug: string };
+}) {
     const { slug } = params;
-
-    if (!slug) {
-        return <p>Error: Missing slug</p>;
-    }
 
     try {
         // データを並行して取得
