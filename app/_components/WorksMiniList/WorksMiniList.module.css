@@ -1,0 +1,134 @@
+.worksItem:not(:nth-last-child(1)) {
+    border-bottom: solid #1e1e1e 1px;
+}
+
+.worksItem {
+    padding-top: 2.4rem;
+    padding-bottom: 2.4rem;
+    height: 13.5rem;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.worksItemInner {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 4.8rem;
+}
+
+.worksItem:hover {
+    height: 40rem;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.worksItem .worksImg .selectArea {
+    height: 13.5rem;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.worksItem:hover .worksImg .selectArea {
+    height: 100%;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.worksItem:hover .worksImg .selectArea img {
+    height: 100%;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.worksItemTitle {
+    border-bottom: solid #1e1e1e 1px;
+    padding-bottom: 1.6rem;
+}
+
+.worksItemTitle h2 {
+    font-size: 2.4rem;
+    letter-spacing: 0.1rem;
+}
+
+.worksInfo {
+    grid-column: 1 / 3;
+}
+
+.worksImg {
+    grid-column: 3 / 5;
+}
+
+.worksImg img {
+    height: 13.5rem;
+    object-fit: cover;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.worksData {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4.8rem;
+}
+
+.date {
+    grid-column: 2 / 3;
+    border-bottom: solid #1e1e1e 1px;
+}
+
+.category {
+    grid-column: 2 / 3;
+}
+
+.date,
+.category {
+    display: flex;
+    justify-content: space-between;
+}
+
+.date p,
+.category p {
+    font-weight: 400;
+}
+
+@media screen and (max-width: 1090px) {
+    .worksItem:hover {
+        height: 21rem;
+        transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+@media screen and (max-width: 900px) {
+    .worksItem {
+        overflow: visible;
+        height: auto;
+        padding: 1.6rem 0;
+        margin-top: 3.2rem;
+        border-top: solid #1e1e1e 1px;
+    }
+    .worksItemInner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        width: 100%;
+    }
+    .worksInfo {
+        width: 100%;
+    }
+    .worksImg {
+        width: 100%;
+        margin-top: 1.6rem;
+    }
+    .worksImg img {
+        height: auto;
+    }
+    .worksItem .worksImg .selectArea {
+        height: auto;
+        transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: visible;
+    }
+    .worksItem:not(:nth-last-child(1)) {
+        border-bottom: 0;
+    }
+    .date,
+    .category {
+        grid-column: 1 / 3;
+    }
+}

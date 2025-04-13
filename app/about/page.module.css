@@ -1,0 +1,164 @@
+.philosophyInner {
+    border-bottom: solid #1e1e1e 1px;
+    padding-bottom: 2.4rem;
+}
+
+.philosophyImg {
+    grid-column: 4 / 6;
+}
+
+.canvas {
+    width: 100% !important;
+    height: auto !important;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+}
+
+.philosophyLeftArea {
+    grid-column: 1 / 4;
+}
+
+.pageTitle {
+    border-bottom: solid #1e1e1e 1px;
+    padding-bottom: 0.8rem;
+}
+
+.pageTitle p {
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.philosophyTitle {
+    border-bottom: solid #1e1e1e 1px;
+    margin-top: 1.6rem;
+    padding-bottom: 1.6rem;
+}
+
+.philosophyTitle p {
+    font-weight: 500;
+}
+
+.philosophyText {
+    margin-top: 3.2rem;
+}
+
+.philosophyText p {
+    font-weight: 400;
+}
+
+.information {
+    grid-column: 1 / 4;
+    padding-bottom: 2.4rem;
+}
+
+.name {
+    padding-bottom: 1.6rem;
+    border-bottom: solid #1e1e1e 1px;
+}
+
+.kanji {
+    font-size: 2.4rem;
+    font-weight: 400;
+}
+
+.romaji {
+    font-weight: 400;
+    margin-top: 0.8rem;
+}
+
+.informationText {
+    margin-top: 2.4rem;
+}
+
+.informationText p {
+    font-weight: 400;
+}
+
+.selfIntroductionImg {
+    grid-column: 4 / 6;
+    padding-bottom: 2.4rem;
+}
+
+.selfIntroductionImg img {
+    aspect-ratio: 16 / 9;
+    height: 100%;
+}
+
+.skillSet {
+    grid-column: 1 / 6;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 4.8rem;
+    border-top: solid #1e1e1e 1px;
+    padding-top: 2.4rem;
+    padding-bottom: 2.4rem;
+    border-bottom: solid #1e1e1e 1px;
+    margin-bottom: 24rem;
+}
+
+.skillSetTop,
+.skillSetUnder {
+    grid-column: 2 / 6;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 4.8rem;
+}
+
+.skillSetUnder {
+    border-top: solid #1e1e1e 1px;
+    padding-top: 1.6rem;
+    margin-top: 1.6rem;
+}
+
+.skillName {
+    border-bottom: solid #1e1e1e 1px;
+    padding-bottom: 0.8rem;
+}
+
+.skillName p {
+    font-weight: 500;
+}
+
+.skillSetItem ul {
+    margin-top: 0.8rem;
+}
+
+.skillSetItem ul li {
+    font-weight: 400;
+}
+
+@media screen and (max-width: 1090px) {
+    .canvas {
+        aspect-ratio: initial;
+    }
+}
+@media screen and (max-width: 900px) {
+    .canvas{
+        display: none;
+    }
+    .selfIntroductionImg {
+        order: 1;
+    }
+    .information{
+        order: 2;
+    }
+    .skillSet{
+        order: 3;
+        column-gap: 2.4rem;
+        row-gap: 4rem;
+    }
+    .skillSetTitle{
+        grid-column: 1 / 6;
+    }
+    .skillSetTop{
+        grid-column: 1 / 6;
+        column-gap: 2.4rem;
+    }
+    .skillSetUnder{
+        grid-column: 1 / 6;
+        column-gap: 2.4rem;
+    }
+    .skillName{
+        height: 4.8rem;
+    }
+}

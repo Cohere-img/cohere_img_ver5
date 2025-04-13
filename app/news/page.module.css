@@ -1,0 +1,18 @@
+.pageTitle {
+    grid-column: 1 / 4;
+    padding-bottom: 0.8rem;
+    border-bottom: solid #1e1e1e 1px;
+    grid-column: 1 / 6;
+}
+
+.newsContainerArea {
+    grid-column: 1 / 6;
+    padding-top: 2.4rem;
+    padding-bottom: 24rem !important;
+}
+
+@media screen and (max-width: 900px) {
+    .pageTitle {
+        width: 100%;
+    }
+}

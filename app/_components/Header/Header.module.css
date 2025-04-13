@@ -1,0 +1,234 @@
+.icon {
+    width: 25.1rem;
+    height: 7.2rem;
+    background-color: #1e1e1e;
+    display: flex;
+    align-items: center;
+    margin-left: -4.8rem;
+}
+
+.headerLogo {
+    height: 4rem;
+    object-fit: none;
+}
+
+.header {
+    padding: 4.8rem;
+    position: fixed;
+    width: calc(100% - 9.6rem);
+    z-index: 999;
+}
+
+.headerInner {
+    position: relative;
+}
+
+.navArea {
+    background-color: #1e1e1e;
+    right: -4.8rem;
+    top: -7.2rem;
+    z-index: 999;
+    height: 19.2rem;
+    width: 4.8rem;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    transition: width 0.3s ease, transform 0.3s ease;
+}
+
+/* =========================
+   MENUボタン（左側に縦書き）
+   ========================= */
+.menuToggle {
+    position: absolute; /* 追加: これでrightプロパティが適用される */
+    transform: rotate(-90deg) translateY(-50%);
+    transform-origin: center;
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    z-index: 999;
+    left: 0;
+    transition: left 0.3s ease;
+}
+
+/* =========================
+     メニュー全体（黒背景 & T字ライン & リスト）
+     ========================= */
+.navMenu {
+    top: 0;
+    left: 4.8rem;
+    border-left: solid #cccccc 1px;
+    width: calc(100% - 4.8rem);
+    height: 19.2rem;
+    color: #cccccc;
+    transform: translateX(100%); /* 初期状態は画面外に隠す */
+    transition: transform 0.3s ease;
+    z-index: 99;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menuOpen {
+    width: calc(20vw + 9.6rem);
+}
+
+.menuOpen .menuToggle {
+    left: 0;
+}
+.menuOpen .navMenu {
+    transform: translateX(0);
+}
+
+/* =========================
+     メニューリスト
+     ========================= */
+.menuList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* 各項目のスタイル */
+.menuList li {
+    margin: 1rem 0;
+    font-size: 1.4rem;
+}
+
+.menuList li a {
+    position: relative;
+    color: #cccccc;
+    z-index: 1; /* テキストを前面に */
+    transition: color 0.3s ease;
+}
+
+.menuList li a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #cccccc;
+    transform: scaleX(0);
+    transform-origin: right; /* 初期状態は右側を軸に縮退 */
+    transition: transform 0.3s ease;
+    z-index: -1; /* テキストの背面 */
+}
+
+.menuList li:hover a::before {
+    transform: scaleX(1);
+    transform-origin: left; /* ホバー時は左側を軸に拡大 */
+}
+
+.menuList li:hover a {
+    color: #1e1e1e;
+}
+
+.border1st {
+    margin-top: 2.4rem !important;
+}
+.border2st {
+    position: relative;
+}
+.border2st::before {
+    content: "";
+    height: 3.2rem;
+    width: 1px;
+    background-color: #cccccc;
+    display: block;
+    position: absolute;
+    top: -3.2rem;
+}
+.borderStyle {
+    height: 1px;
+    width: 9.6rem;
+    margin-top: 2rem;
+    background-color: #cccccc;
+}
+
+.border {
+    height: 1px;
+    width: 4.8rem;
+    margin-top: 3.2rem;
+    background-color: #cccccc;
+}
+
+.borderConts {
+    display: flex;
+}
+
+@media screen and (max-width: 900px) {
+    .header {
+        padding: 0 2.4rem;
+    }
+    .menuToggle {
+        font-size: 1.4rem;
+        top: 0;
+        transform: initial;
+        transition: top 0.3s ease;
+        width: 100%;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+        height: 4.8rem;
+    }
+    .navMenu {
+        transform: translateY(100%);
+        bottom: 0;
+        transition: transform 0.3s ease;
+    }
+    .menuOpen {
+        height: 100vh !important;
+        top: -10.4rem !important;
+        transition: top 0.3s ease;
+    }
+
+    .menuOpen .menuToggle {
+        top: 0;
+    }
+    .menuOpen .navMenu {
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+    }
+    .icon {
+        width: 60vw;
+        height: 5.6rem;
+    }
+    .headerLogo {
+        height: 3.2rem;
+    }
+    .navArea {
+        top: calc(100dvh - 10rem);
+        height: 4.8rem;
+        width: 100vw;
+        display: block;
+        transition: top 0.3s ease;
+        right: 0;
+        left: -2.4rem;
+    }
+    .navMenu {
+        height: 100vh;
+        border-left: 0;
+        border-top: solid #cccccc 1px;
+        top: 4.8rem;
+        width: 100%;
+        left: 0;
+        transform: translateY(100%);
+    }
+    .menuList li {
+        margin: 3.2rem 0;
+    }
+    .border1st {
+        margin-top: 4rem !important;
+    }
+    .border {
+        margin-top: 5.6rem;
+    }
+    .border2st::before {
+        height: 5.6rem;
+        top: -5.6rem;
+    }
+}

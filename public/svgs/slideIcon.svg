@@ -1,0 +1,50 @@
+<svg
+                                                width="5rem"
+                                                height="5rem"
+                                                viewBox="0 0 51 51"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M40.69 16.56H9.79999V33.94H40.69V16.56Z"
+                                                    stroke="white"
+                                                    strokeWidth="0.5"
+                                                    strokeMiterlimit="10"
+                                                />
+                                                <path
+                                                    d="M25.25 50.25C39.0571 50.25 50.25 39.0571 50.25 25.25C50.25 11.4429 39.0571 0.25 25.25 0.25C11.4429 0.25 0.25 11.4429 0.25 25.25C0.25 39.0571 11.4429 50.25 25.25 50.25Z"
+                                                    stroke="white"
+                                                    strokeWidth="0.5"
+                                                    strokeMiterlimit="10"
+                                                />
+                                                <path
+                                                    d="M30.92 21.96L34.21 25.25L30.92 28.54"
+                                                    stroke="white"
+                                                    strokeWidth="0.5"
+                                                    strokeMiterlimit="10"
+                                                />
+                                                <path
+                                                    d="M19.58 28.54L16.29 25.25L19.58 21.96"
+                                                    stroke="white"
+                                                    strokeWidth="0.5"
+                                                    strokeMiterlimit="10"
+                                                />
+                                                <path
+                                                    d="M16.29 25.25H34.21"
+                                                    stroke="white"
+                                                    strokeWidth="0.5"
+                                                    strokeMiterlimit="10"
+                                                />
+                                                <path
+                                                    d="M48.7 16.56H44.08V33.94H48.7C49.7 31.23 50.25 28.31 50.25 25.25C50.25 22.19 49.7 19.27 48.7 16.56Z"
+                                                    stroke="white"
+                                                    strokeWidth="0.5"
+                                                    strokeMiterlimit="10"
+                                                />
+                                                <path
+                                                    d="M6.43001 16.56H1.81001C0.810013 19.27 0.26001 22.19 0.26001 25.25C0.26001 28.31 0.810013 31.23 1.81001 33.94H6.43001V16.56Z"
+                                                    stroke="white"
+                                                    strokeWidth="0.5"
+                                                    strokeMiterlimit="10"
+                                                />
+                                            </svg>

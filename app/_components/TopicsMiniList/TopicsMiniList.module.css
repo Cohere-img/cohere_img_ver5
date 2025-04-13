@@ -1,0 +1,35 @@
+.newsItemBox {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 4.8rem;
+}
+
+.newsImg {
+    overflow: hidden;
+}
+
+.newsImg img {
+    transition: transform 0.3s ease;
+}
+
+.newsItem:hover .newsImg img {
+    transform: scale(1.2);
+}
+
+.newsDate{
+    margin-top: 0.8rem;
+}
+
+.newsDate p{
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.newsItemTitle{
+    margin-top: 0.8rem;
+}
+
+.newsItemTitle h3{
+    font-size: 1.6rem;
+    font-weight: 600;
+}

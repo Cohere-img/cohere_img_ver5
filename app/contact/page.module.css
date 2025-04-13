@@ -1,0 +1,16 @@
+.pageTitle {
+    grid-column: 1 / 6;
+    border-bottom: solid #1e1e1e 1px;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+    .pageTitle{
+        width: 100%;
+    }
+    .contactTopInner {
+        column-gap: 0;
+        grid-column-gap: 0;
+    }
+}
