@@ -3,6 +3,8 @@ import Image from "next/image";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
+    const currentYear = new Date().getFullYear();
+
     return (
         <footer className={styles.footer}>
             <div className={`inner ${styles.footerInner}`}>
@@ -72,6 +74,12 @@ export default function Footer() {
                             </li>
                         </ul>
                     </nav>
+                    <div className={styles.copyRight}>
+                        <p>
+                            &copy; {currentYear} Cohere Inc. All rights
+                            reserved.
+                        </p>
+                    </div>
                 </div>
             </div>
         </footer>

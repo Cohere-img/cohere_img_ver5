@@ -160,6 +160,15 @@
     height: 100%;
 }
 
+.copyRight {
+    text-align: end;
+}
+
+.copyRight p {
+    font-size: 1.2rem;
+    color: #cccccc;
+}
+
 @media screen and (max-width: 900px) {
     .footerInner {
         padding: 4.8rem 2.4rem;
@@ -189,5 +198,9 @@
     }
     .footer {
         order: 4;
+    }
+    .copyRight {
+        text-align: center;
+        margin-top: 2.4rem;
     }
 }
