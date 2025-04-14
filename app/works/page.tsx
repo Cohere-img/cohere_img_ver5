@@ -13,6 +13,13 @@ export default function Home() {
     const [selectedCategory, setSelectedCategory] = useState("All"); // 現在選択されているカテゴリ
 
     useEffect(() => {
+        // URLのクエリパラメータからカテゴリーを取得
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get("category");
+        if (category) {
+            setSelectedCategory(category);
+        }
+
         // Worksデータを取得
         const fetchData = async () => {
             try {

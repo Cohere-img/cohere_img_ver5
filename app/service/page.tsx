@@ -52,7 +52,7 @@ export default function Home() {
                                     className={`linkBtn ${styles.serviceLinkBtn}`}
                                 >
                                     <Link
-                                        href="/works"
+                                        href="/works?category=Web"
                                         className={styles.serviceLink}
                                     >
                                         <span>Web works</span>
@@ -95,7 +95,7 @@ export default function Home() {
                                     className={`linkBtn ${styles.serviceLinkBtn}`}
                                 >
                                     <Link
-                                        href="/works"
+                                        href="/works?category=Logo / VI"
                                         className={styles.serviceLink}
                                     >
                                         <span>Logo / VI works</span>
@@ -155,7 +155,7 @@ export default function Home() {
                                     className={`linkBtn ${styles.serviceLinkBtn}`}
                                 >
                                     <Link
-                                        href="/works"
+                                        href="/works?category=Graphic"
                                         className={styles.serviceLink}
                                     >
                                         <span>Graphic works</span>
@@ -209,7 +209,7 @@ export default function Home() {
                                     className={`linkBtn ${styles.serviceLinkBtn}`}
                                 >
                                     <Link
-                                        href="/works"
+                                        href="/works?category=Visual / Content"
                                         className={styles.serviceLink}
                                     >
                                         <span>Visual Contents works</span>
