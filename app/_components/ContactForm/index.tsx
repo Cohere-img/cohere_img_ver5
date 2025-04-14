@@ -61,8 +61,8 @@ export default function ContactForm() {
                     />
                 </div>
                 <div className={styles.item}>
-                    <label className={styles.label} htmlFor="email">
-                        web-site URL
+                    <label className={styles.label} htmlFor="web_site_url">
+                        web-site URL{" "}
                     </label>
                     <input
                         className={styles.textfield}

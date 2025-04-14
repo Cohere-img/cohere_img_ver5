@@ -36,12 +36,6 @@ export async function createContactData(
             message: "ERROR メールアドレスを入力してください",
         };
     }
-    if (!rawFormData.web_site_url) {
-        return {
-            status: "error",
-            message: "ERROR URLを入力してください",
-        };
-    }
     if (!rawFormData.comment) {
         return {
             status: "error",
