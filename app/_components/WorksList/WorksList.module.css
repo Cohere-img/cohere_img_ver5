@@ -2,6 +2,10 @@
     grid-column: 1 / 6;
 }
 
+.worksItem {
+    overflow: hidden;
+}
+
 .worksItem:not(:nth-last-child(1)) {
     padding-bottom: 2.4rem;
     border-bottom: solid #1e1e1e 1px;
@@ -9,6 +13,11 @@
 
 .worksItem:not(:nth-child(1)) {
     padding-top: 2.4rem;
+}
+
+.worksItem:hover .worksImg {
+    height: 40rem;
+    transition: height 0.3s ease;
 }
 
 .worksItem:hover .selectArea {
@@ -45,6 +54,9 @@
 
 .worksImg {
     grid-column: 3 / 5;
+    height: 13.5rem;
+    overflow: hidden;
+    transition: height 0.3s ease;
 }
 
 .worksImg img {
