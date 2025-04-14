@@ -149,7 +149,7 @@ export default function WorksList({
                                     alt={work.title}
                                     className={styles.thumbnail}
                                     priority={true}
-                                    style={{ width: "100%", height: "auto" }}
+                                    style={{ width: "100%" }}
                                 />
                             </div>
                         </Link>
