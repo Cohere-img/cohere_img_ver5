@@ -63,53 +63,51 @@ export default function WorksMiniList() {
 
                 return (
                     <article key={work.id} className={styles.worksItem}>
-                        <div className={`mask`}>
-                            <div className={styles.worksItemInner}>
-                                <div className={styles.worksInfo}>
-                                    <div className={styles.worksItemTitle}>
-                                        <Link
-                                            href={`/works/${work.id}`}
-                                            className={`selectArea ${styles.selectArea}`}
-                                            onClick={(e) => {
-                                                console.log(
-                                                    `Navigating to /works/${work.id}`
-                                                );
-                                                // クリックイベントの伝播を停止
-                                                e.stopPropagation();
-                                            }}
-                                        >
-                                            <h2>{work.title}</h2>
-                                        </Link>
-                                    </div>
-                                    <div className={styles.worksData}>
-                                        <div className={styles.date}>
-                                            <p>Date</p>
-                                            <p>
-                                                {new Date(work.date)
-                                                    .toISOString()
-                                                    .split("T")[0]
-                                                    .split("-")
-                                                    .slice(0, 2)
-                                                    .join("/")}
-                                            </p>
-                                        </div>
-                                        <div className={styles.category}>
-                                            <p>Category</p>
-                                            <p>{categoryName}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className={styles.worksImg}>
-                                    <Link href={`/works/${work.id}`}>
-                                        <Image
-                                            src={work.eyechatch.url}
-                                            alt={work.title}
-                                            className={styles.thumbnail}
-                                            priority={true}
-                                            style={{ width: "100%" }}
-                                        />
+                        <div className={styles.worksItemInner}>
+                            <div className={styles.worksInfo}>
+                                <div className={styles.worksItemTitle}>
+                                    <Link
+                                        href={`/works/${work.id}`}
+                                        className={`selectArea ${styles.selectArea}`}
+                                        onClick={(e) => {
+                                            console.log(
+                                                `Navigating to /works/${work.id}`
+                                            );
+                                            // クリックイベントの伝播を停止
+                                            e.stopPropagation();
+                                        }}
+                                    >
+                                        <h2>{work.title}</h2>
                                     </Link>
                                 </div>
+                                <div className={styles.worksData}>
+                                    <div className={styles.date}>
+                                        <p>Date</p>
+                                        <p>
+                                            {new Date(work.date)
+                                                .toISOString()
+                                                .split("T")[0]
+                                                .split("-")
+                                                .slice(0, 2)
+                                                .join("/")}
+                                        </p>
+                                    </div>
+                                    <div className={styles.category}>
+                                        <p>Category</p>
+                                        <p>{categoryName}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles.worksImg}>
+                                <Link href={`/works/${work.id}`}>
+                                    <Image
+                                        src={work.eyechatch.url}
+                                        alt={work.title}
+                                        className={styles.thumbnail}
+                                        priority={true}
+                                        style={{ width: "100%" }}
+                                    />
+                                </Link>
                             </div>
                         </div>
                     </article>

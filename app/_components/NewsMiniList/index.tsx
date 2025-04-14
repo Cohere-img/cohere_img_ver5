@@ -38,39 +38,34 @@ export default function NewsMiniList() {
             <div className={styles.newsItemBox}>
                 {newsItems.map((news) => (
                     <article key={news.id} className={styles.newsItem}>
-                        <div className={`mask`}>
-                            <Link
-                                href={`/news/${news.id}`}
-                                className={styles.NewsList}
-                            >
-                                <div className={styles.newsImg}>
-                                    <Image
-                                        src={news.poster.url}
-                                        alt={news.title}
-                                        className={styles.thumbnail}
-                                        priority={true}
-                                        style={{
-                                            width: "100%",
-                                            height: "auto",
-                                        }}
-                                    />
-                                </div>
-                                <div className={styles.newsDate}>
-                                    <p>
-                                        {new Date(news.createdAt)
-                                            .toLocaleDateString("ja-JP", {
-                                                year: "numeric",
-                                                month: "2-digit",
-                                                day: "2-digit",
-                                            })
-                                            .replace(/\//g, ".")}
-                                    </p>
-                                </div>
-                                <div className={styles.newsItemTitle}>
-                                    <h3>{news.title}</h3>
-                                </div>
-                            </Link>
-                        </div>
+                        <Link
+                            href={`/news/${news.id}`}
+                            className={styles.NewsList}
+                        >
+                            <div className={styles.newsImg}>
+                                <Image
+                                    src={news.poster.url}
+                                    alt={news.title}
+                                    className={styles.thumbnail}
+                                    priority={true}
+                                    style={{ width: "100%", height: "auto" }}
+                                />
+                            </div>
+                            <div className={styles.newsDate}>
+                                <p>
+                                    {new Date(news.createdAt)
+                                        .toLocaleDateString("ja-JP", {
+                                            year: "numeric",
+                                            month: "2-digit",
+                                            day: "2-digit",
+                                        })
+                                        .replace(/\//g, ".")}
+                                </p>
+                            </div>
+                            <div className={styles.newsItemTitle}>
+                                <h3>{news.title}</h3>
+                            </div>
+                        </Link>
                     </article>
                 ))}
             </div>

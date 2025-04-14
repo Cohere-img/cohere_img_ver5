@@ -79,58 +79,50 @@ export default function NewsList() {
                         className={styles.newsItem}
                         ref={ref}
                     >
-                        <div className={`mask`}>
-                            <Link
-                                href={`/news/${newsItem.id}`}
-                                className={styles.selectArea}
-                                onClick={(e) => {
-                                    console.log(
-                                        `Navigating to /news/${newsItem.id}`
-                                    );
-                                    // クリックイベントの伝播を停止
-                                    e.stopPropagation();
-                                }}
-                            >
-                                <div className={styles.newsInfo}>
-                                    <div className={styles.newsItemTitle}>
-                                        <h2>{newsItem.title}</h2>
+                        <Link
+                            href={`/news/${newsItem.id}`}
+                            className={styles.selectArea}
+                            onClick={(e) => {
+                                console.log(
+                                    `Navigating to /news/${newsItem.id}`
+                                );
+                                // クリックイベントの伝播を停止
+                                e.stopPropagation();
+                            }}
+                        >
+                            <div className={styles.newsInfo}>
+                                <div className={styles.newsItemTitle}>
+                                    <h2>{newsItem.title}</h2>
+                                </div>
+                                <div className={styles.newsData}>
+                                    <div className={styles.date}>
+                                        <p>Date</p>
+                                        <p>
+                                            {new Date(newsItem.createdAt)
+                                                .toLocaleDateString("ja-JP", {
+                                                    year: "numeric",
+                                                    month: "2-digit",
+                                                    day: "2-digit",
+                                                })
+                                                .replace(/\//g, ".")}
+                                        </p>
                                     </div>
-                                    <div className={styles.newsData}>
-                                        <div className={styles.date}>
-                                            <p>Date</p>
-                                            <p>
-                                                {new Date(newsItem.createdAt)
-                                                    .toLocaleDateString(
-                                                        "ja-JP",
-                                                        {
-                                                            year: "numeric",
-                                                            month: "2-digit",
-                                                            day: "2-digit",
-                                                        }
-                                                    )
-                                                    .replace(/\//g, ".")}
-                                            </p>
-                                        </div>
-                                        <div className={styles.category}>
-                                            <p>Category</p>
-                                            <p>{newsItem.category.name}</p>
-                                        </div>
+                                    <div className={styles.category}>
+                                        <p>Category</p>
+                                        <p>{newsItem.category.name}</p>
                                     </div>
                                 </div>
-                                <div className={styles.newsImg}>
-                                    <Image
-                                        src={newsItem.poster.url}
-                                        alt={newsItem.title}
-                                        className={styles.thumbnail}
-                                        priority={true}
-                                        style={{
-                                            width: "100%",
-                                            height: "auto",
-                                        }}
-                                    />
-                                </div>
-                            </Link>
-                        </div>
+                            </div>
+                            <div className={styles.newsImg}>
+                                <Image
+                                    src={newsItem.poster.url}
+                                    alt={newsItem.title}
+                                    className={styles.thumbnail}
+                                    priority={true}
+                                    style={{ width: "100%", height: "auto" }}
+                                />
+                            </div>
+                        </Link>
                     </article>
                 );
             })}
