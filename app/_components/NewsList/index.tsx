@@ -117,7 +117,6 @@ export default function NewsList() {
                                 <Image
                                     src={newsItem.poster.url}
                                     alt={newsItem.title}
-                                    fill
                                     className={styles.thumbnail}
                                     priority={true}
                                     style={{ width: "100%", height: "auto" }}

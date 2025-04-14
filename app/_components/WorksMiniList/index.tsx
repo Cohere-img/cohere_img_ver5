@@ -103,7 +103,6 @@ export default function WorksMiniList() {
                                     <Image
                                         src={work.eyechatch.url}
                                         alt={work.title}
-                                        fill
                                         className={styles.thumbnail}
                                         priority={true}
                                         style={{

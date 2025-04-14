@@ -46,7 +46,6 @@ export default function NewsMiniList() {
                                 <Image
                                     src={news.poster.url}
                                     alt={news.title}
-                                    fill
                                     className={styles.thumbnail}
                                     priority={true}
                                     style={{ width: "100%", height: "auto" }}

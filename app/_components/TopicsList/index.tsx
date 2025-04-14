@@ -46,7 +46,6 @@ export default function TopicsList() {
                                 <Image
                                     src={topic.poster.url}
                                     alt={topic.title}
-                                    fill
                                     className={styles.thumbnail}
                                     priority={true}
                                     style={{ width: "100%", height: "auto" }}
