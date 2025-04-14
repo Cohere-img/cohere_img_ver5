@@ -2,6 +2,13 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
+    // デバッグログ
+    console.log("Middleware running for:", request.nextUrl.pathname);
+    console.log("Environment variables:", {
+        user: process.env.BASIC_AUTH_USER,
+        hasPassword: !!process.env.BASIC_AUTH_PASSWORD,
+    });
+
     const basicAuth = request.headers.get("authorization");
 
     if (basicAuth) {
@@ -28,11 +35,10 @@ export const config = {
     matcher: [
         /*
          * Match all request paths except for the ones starting with:
-         * - api (API routes)
          * - _next/static (static files)
          * - _next/image (image optimization files)
          * - favicon.ico (favicon file)
          */
-        "/((?!api|_next/static|_next/image|favicon.ico).*)",
+        "/((?!_next/static|_next/image|favicon.ico).*)",
     ],
 };
