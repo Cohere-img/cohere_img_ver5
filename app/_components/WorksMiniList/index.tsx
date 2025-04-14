@@ -102,9 +102,10 @@ export default function WorksMiniList() {
                                 <Image
                                     src={work.eyechatch.url}
                                     alt={work.title}
-                                    width={300}
-                                    height={200}
+                                    width={work.eyechatch.width}
+                                    height={work.eyechatch.height}
                                     className={styles.thumbnail}
+                                    priority={true}
                                 />
                             </div>
                         </div>

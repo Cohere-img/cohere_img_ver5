@@ -6,7 +6,13 @@ const nextConfig: NextConfig = {
         MICROCMS_API_KEY: process.env.MICROCMS_API_KEY,
     },
     images: {
-        domains: ["images.microcms-assets.io"],
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "images.microcms-assets.io",
+                pathname: "/assets/**",
+            },
+        ],
     },
     eslint: {
         ignoreDuringBuilds: true,
