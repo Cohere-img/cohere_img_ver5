@@ -143,7 +143,7 @@ export default function WorksList({
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.worksThumbnail}>
+                            <div className={styles.worksImg}>
                                 <Image
                                     src={work.eyechatch.url}
                                     alt={work.title}

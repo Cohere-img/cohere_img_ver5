@@ -98,7 +98,7 @@ export default function WorksMiniList() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.worksThumbnail}>
+                            <div className={styles.worksImg}>
                                 <Link href={`/works/${work.id}`}>
                                     <Image
                                         src={work.eyechatch.url}

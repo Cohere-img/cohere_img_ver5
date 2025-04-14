@@ -113,7 +113,7 @@ export default function NewsList() {
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.newsThumbnail}>
+                            <div className={styles.newsImg}>
                                 <Image
                                     src={newsItem.poster.url}
                                     alt={newsItem.title}
