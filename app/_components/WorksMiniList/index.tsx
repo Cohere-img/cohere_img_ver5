@@ -99,14 +99,19 @@ export default function WorksMiniList() {
                                 </div>
                             </div>
                             <div className={styles.worksThumbnail}>
-                                <Image
-                                    src={work.eyechatch.url}
-                                    alt={work.title}
-                                    width={work.eyechatch.width}
-                                    height={work.eyechatch.height}
-                                    className={styles.thumbnail}
-                                    priority={true}
-                                />
+                                <Link href={`/works/${work.id}`}>
+                                    <Image
+                                        src={work.eyechatch.url}
+                                        alt={work.title}
+                                        fill
+                                        className={styles.thumbnail}
+                                        priority={true}
+                                        style={{
+                                            width: "100%",
+                                            height: "auto",
+                                        }}
+                                    />
+                                </Link>
                             </div>
                         </div>
                     </article>

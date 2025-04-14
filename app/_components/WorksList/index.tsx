@@ -147,9 +147,10 @@ export default function WorksList({
                                 <Image
                                     src={work.eyechatch.url}
                                     alt={work.title}
-                                    width={300}
-                                    height={200}
+                                    fill
                                     className={styles.thumbnail}
+                                    priority={true}
+                                    style={{ width: "100%", height: "auto" }}
                                 />
                             </div>
                         </Link>

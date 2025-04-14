@@ -46,8 +46,10 @@ export default function TopicsMiniList() {
                                 <Image
                                     src={topic.poster.url}
                                     alt={topic.title}
-                                    width={300}
-                                    height={200}
+                                    fill
+                                    className={styles.thumbnail}
+                                    priority={true}
+                                    style={{ width: "100%", height: "auto" }}
                                 />
                             </div>
                             <div className={styles.newsDate}>
