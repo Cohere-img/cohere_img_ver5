@@ -93,6 +93,7 @@
 @media screen and (max-width: 900px) {
     .newsItem {
         height: auto;
+        width: 100%;
     }
     .selectArea {
         height: auto;

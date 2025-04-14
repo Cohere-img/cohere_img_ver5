@@ -135,7 +135,12 @@ export default function WorksList({
                                 <div className={styles.worksData}>
                                     <div className={styles.date}>
                                         <p>Date</p>
-                                        <p>{work.date}</p>
+                                        <p>
+                                            {new Date(work.date)
+                                                .toISOString()
+                                                .slice(0, 7)
+                                                .replace("-", "/")}
+                                        </p>
                                     </div>
                                     <div className={styles.category}>
                                         <p>Category</p>

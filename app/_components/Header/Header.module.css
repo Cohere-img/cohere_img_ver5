@@ -182,7 +182,7 @@
     }
     .menuOpen {
         height: 100vh !important;
-        top: -10.4rem !important;
+        top: -5.6rem !important;
         transition: top 0.3s ease;
     }
 
