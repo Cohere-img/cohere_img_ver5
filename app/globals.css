@@ -4,7 +4,6 @@ html,
 body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
 img,
@@ -354,10 +353,11 @@ img {
 }
 
 @media screen and (max-width: 900px) {
-    .inner{
+    .inner {
         display: flex;
         flex-wrap: wrap;
-    }section:not(.mainVisual) {
+    }
+    section:not(.mainVisual) {
         padding: 12rem 2.4rem 0;
     }
     h1 {
