@@ -104,12 +104,14 @@ export default function Home() {
                                 </div>
                             </div>
                         </div>
-                        <div className={styles.philosophyRightArea}>
-                            <canvas
-                                id="three-canvas"
-                                ref={canvasRef}
-                                className={styles.canvas}
-                            ></canvas>
+                        <div className={styles.philosophyImg}>
+                            <div className={`mask`}>
+                                <canvas
+                                    id="three-canvas"
+                                    ref={canvasRef}
+                                    className={styles.canvas}
+                                ></canvas>
+                            </div>
                         </div>
                     </div>
                 </section>
