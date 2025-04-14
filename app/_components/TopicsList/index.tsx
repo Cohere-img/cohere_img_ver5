@@ -38,34 +38,39 @@ export default function TopicsList() {
             <div className={styles.newsItemBox}>
                 {topics.map((topic) => (
                     <article key={topic.id} className={styles.newsItem}>
-                        <Link
-                            href="#"
-                            className={`topicsList ${styles.topicsList}`}
-                        >
-                            <div className={styles.newsImg}>
-                                <Image
-                                    src={topic.poster.url}
-                                    alt={topic.title}
-                                    className={styles.thumbnail}
-                                    priority={true}
-                                    style={{ width: "100%", height: "auto" }}
-                                />
-                            </div>
-                            <div className={styles.newsDate}>
-                                <p>
-                                    {new Date(topic.createdAt)
-                                        .toLocaleDateString("ja-JP", {
-                                            year: "numeric",
-                                            month: "2-digit",
-                                            day: "2-digit",
-                                        })
-                                        .replace(/\//g, ".")}
-                                </p>
-                            </div>
-                            <div className={styles.newsItemTitle}>
-                                <h3>{topic.title}</h3>
-                            </div>
-                        </Link>
+                        <div className={`mask`}>
+                            <Link
+                                href="#"
+                                className={`topicsList ${styles.topicsList}`}
+                            >
+                                <div className={styles.newsImg}>
+                                    <Image
+                                        src={topic.poster.url}
+                                        alt={topic.title}
+                                        className={styles.thumbnail}
+                                        priority={true}
+                                        style={{
+                                            width: "100%",
+                                            height: "auto",
+                                        }}
+                                    />
+                                </div>
+                                <div className={styles.newsDate}>
+                                    <p>
+                                        {new Date(topic.createdAt)
+                                            .toLocaleDateString("ja-JP", {
+                                                year: "numeric",
+                                                month: "2-digit",
+                                                day: "2-digit",
+                                            })
+                                            .replace(/\//g, ".")}
+                                    </p>
+                                </div>
+                                <div className={styles.newsItemTitle}>
+                                    <h3>{topic.title}</h3>
+                                </div>
+                            </Link>
+                        </div>
                     </article>
                 ))}
             </div>

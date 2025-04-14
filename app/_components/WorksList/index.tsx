@@ -124,35 +124,37 @@ export default function WorksList({
                         className={styles.worksItem}
                         ref={ref}
                     >
-                        <Link
-                            href={`/works/${work.id}`}
-                            className={styles.selectArea}
-                        >
-                            <div className={styles.worksInfo}>
-                                <div className={styles.worksItemTitle}>
-                                    <h2>{work.title}</h2>
-                                </div>
-                                <div className={styles.worksData}>
-                                    <div className={styles.date}>
-                                        <p>Date</p>
-                                        <p>{work.date}</p>
+                        <div className={`mask`}>
+                            <Link
+                                href={`/works/${work.id}`}
+                                className={styles.selectArea}
+                            >
+                                <div className={styles.worksInfo}>
+                                    <div className={styles.worksItemTitle}>
+                                        <h2>{work.title}</h2>
                                     </div>
-                                    <div className={styles.category}>
-                                        <p>Category</p>
-                                        <p>{work.category?.name}</p>
+                                    <div className={styles.worksData}>
+                                        <div className={styles.date}>
+                                            <p>Date</p>
+                                            <p>{work.date}</p>
+                                        </div>
+                                        <div className={styles.category}>
+                                            <p>Category</p>
+                                            <p>{work.category?.name}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className={styles.worksImg}>
-                                <Image
-                                    src={work.eyechatch.url}
-                                    alt={work.title}
-                                    className={styles.thumbnail}
-                                    priority={true}
-                                    style={{ width: "100%" }}
-                                />
-                            </div>
-                        </Link>
+                                <div className={styles.worksImg}>
+                                    <Image
+                                        src={work.eyechatch.url}
+                                        alt={work.title}
+                                        className={styles.thumbnail}
+                                        priority={true}
+                                        style={{ width: "100%" }}
+                                    />
+                                </div>
+                            </Link>
+                        </div>
                     </article>
                 );
             })}
