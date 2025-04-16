@@ -63,22 +63,13 @@ export default function WorksMiniList() {
 
                 return (
                     <article key={work.id} className={styles.worksItem}>
-                        <div className={styles.worksItemInner}>
+                        <Link
+                            href={`/works/${work.id}`}
+                            className={styles.selectArea}
+                        >
                             <div className={styles.worksInfo}>
                                 <div className={styles.worksItemTitle}>
-                                    <Link
-                                        href={`/works/${work.id}`}
-                                        className={`selectArea ${styles.selectArea}`}
-                                        onClick={(e) => {
-                                            console.log(
-                                                `Navigating to /works/${work.id}`
-                                            );
-                                            // クリックイベントの伝播を停止
-                                            e.stopPropagation();
-                                        }}
-                                    >
-                                        <h2>{work.title}</h2>
-                                    </Link>
+                                    <h2>{work.title}</h2>
                                 </div>
                                 <div className={styles.worksData}>
                                     <div className={styles.date}>
@@ -99,17 +90,15 @@ export default function WorksMiniList() {
                                 </div>
                             </div>
                             <div className={styles.worksImg}>
-                                <Link href={`/works/${work.id}`}>
-                                    <Image
-                                        src={work.eyechatch.url}
-                                        alt={work.title}
-                                        className={styles.thumbnail}
-                                        priority={true}
-                                        style={{ width: "100%" }}
-                                    />
-                                </Link>
+                                <Image
+                                    src={work.eyechatch.url}
+                                    alt={work.title}
+                                    className={styles.thumbnail}
+                                    priority={true}
+                                    style={{ width: "100%" }}
+                                />
                             </div>
-                        </div>
+                        </Link>
                     </article>
                 );
             })}
