@@ -4,7 +4,7 @@
 
 .contentTitle {
     grid-column: 1 / 6;
-    border-bottom: solid #1e1e1e;
+    border-bottom: solid #1e1e1e 1px;
     padding-bottom: 0.8rem;
 }
 
