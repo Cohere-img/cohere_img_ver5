@@ -60,7 +60,7 @@
 }
 
 .newsImg img {
-    height: 13.5rem !important;
+    height: 13.5rem;
     object-fit: cover;
     transition: height 0.3s ease;
     aspect-ratio: 16 / 9;
