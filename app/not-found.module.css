@@ -17,11 +17,15 @@
 }
 
 .title {
-    font-size: 12rem;
-    font-weight: 700;
+    font-size: 24rem;
+    font-weight: 500;
     color: #1e1e1e;
     margin-bottom: 2rem;
     line-height: 1;
+}
+
+.titleArea {
+    grid-column: 2 / 6;
 }
 
 .message {
