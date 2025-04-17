@@ -1,10 +1,7 @@
-"use client";
-
-import styles from "./page.module.css";
 import Header from "../_components/Header";
-import NewsList from "../_components/NewsList/index";
 import Footer from "../_components/Footer";
 import type { Metadata } from "next";
+import NewsList from "./_components/NewsList";
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
@@ -22,8 +19,6 @@ export async function generateMetadata(): Promise<Metadata> {
             "フリーランスデザイナー",
             "秋田県",
             "Web制作",
-            "Webデザイン",
-            "ロゴデザイン",
         ],
         openGraph: {
             title: "Cohere.img | News",
