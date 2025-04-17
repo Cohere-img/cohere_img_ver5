@@ -12,14 +12,18 @@ export default function NotFound() {
                     <div className={`inner ${styles.notFoundContainerInner}`}>
                         <h1 className={styles.title}>404</h1>
                         <div className={styles.titleArea}>
-                            <p className={styles.titleEn}>Not Found</p>
-                            <p className={styles.message}>
-                                お探しのページが見つかりませんでした
+                            <div className={styles.titleAreaInner}>
+                                <p className={styles.titleEn}>
+                                    ERROR:Not Found
+                                </p>
+                                <p className={styles.message}>
+                                    お探しのページが見つかりませんでした。
+                                </p>
+                            </div>
+                            <p className={styles.description}>
+                                申し訳ありませんが、お探しのページは存在しないか、移動した可能性があります。
                             </p>
                         </div>
-                        <p className={styles.description}>
-                            申し訳ありませんが、お探しのページは存在しないか、移動した可能性があります。
-                        </p>
                         <Link href="/" className={styles.homeLink}>
                             Top Page
                         </Link>
