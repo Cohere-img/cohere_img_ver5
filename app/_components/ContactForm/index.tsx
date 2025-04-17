@@ -2,7 +2,7 @@
 
 import { createContactData, ContactFormState } from "@/app/_actions/contact";
 import { useActionState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
 declare global {
@@ -27,6 +27,7 @@ export default function ContactForm() {
         createContactData,
         initialState
     );
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         const loadReCaptcha = () => {
@@ -41,6 +42,7 @@ export default function ContactForm() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setIsSubmitting(true);
 
         try {
             const form = e.currentTarget;
@@ -56,13 +58,15 @@ export default function ContactForm() {
             formData.append("recaptcha_token", token);
 
             // フォーム送信
-            formAction(formData);
+            await formAction(formData);
         } catch (error) {
             console.error("Error submitting form:", error);
             return {
                 status: "error",
                 message: "フォームの送信に失敗しました。",
             };
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -81,7 +85,7 @@ export default function ContactForm() {
             <div className={styles.wrapper}>
                 <div className={styles.item}>
                     <label htmlFor="firstname" className={styles.label}>
-                        Name
+                        Name <span className={styles.required}>*</span>
                     </label>
                     <input
                         className={styles.textfield}
@@ -100,12 +104,11 @@ export default function ContactForm() {
                         type="text"
                         id="company_name"
                         name="company_name"
-                        required
                     />
                 </div>
                 <div className={styles.item}>
                     <label className={styles.label} htmlFor="email">
-                        E-Mail
+                        E-Mail <span className={styles.required}>*</span>
                     </label>
                     <input
                         className={styles.textfield}
@@ -117,7 +120,7 @@ export default function ContactForm() {
                 </div>
                 <div className={styles.item}>
                     <label className={styles.label} htmlFor="web_site_url">
-                        web-site URL{" "}
+                        web-site URL
                     </label>
                     <input
                         className={styles.textfield}
@@ -128,7 +131,7 @@ export default function ContactForm() {
                 </div>
                 <div className={styles.item}>
                     <label className={styles.label} htmlFor="comment">
-                        Message
+                        Message <span className={styles.required}>*</span>
                     </label>
                     <textarea
                         className={styles.textarea}
@@ -141,8 +144,12 @@ export default function ContactForm() {
                     {state.status === "error" && (
                         <p className={styles.error}>{state.message}</p>
                     )}
-                    <button type="submit" className={styles.button}>
-                        Send
+                    <button
+                        type="submit"
+                        className={styles.button}
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "送信中..." : "Send"}
                     </button>
                 </div>
             </div>

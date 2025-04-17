@@ -58,29 +58,32 @@ export async function createContactData(
         };
     }
 
-    // Validate form data
-    if (!rawFormData.firstname) {
+    // Validate required fields
+    if (!rawFormData.firstname?.trim()) {
         return {
             status: "error",
-            message: "ERROR 名前を入力してください",
+            message: "名前を入力してください",
         };
     }
-    if (!rawFormData.company_name) {
+    if (!rawFormData.email?.trim()) {
         return {
             status: "error",
-            message: "ERROR 企業名を入力してください",
+            message: "メールアドレスを入力してください",
         };
     }
-    if (!rawFormData.email) {
+    if (!rawFormData.comment?.trim()) {
         return {
             status: "error",
-            message: "ERROR メールアドレスを入力してください",
+            message: "メッセージを入力してください",
         };
     }
-    if (!rawFormData.comment) {
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(rawFormData.email)) {
         return {
             status: "error",
-            message: "ERROR メッセージを入力してください",
+            message: "有効なメールアドレスを入力してください",
         };
     }
 
@@ -103,7 +106,7 @@ export async function createContactData(
                         {
                             objectTypeId: "0-1",
                             name: "company_name",
-                            value: rawFormData.company_name,
+                            value: rawFormData.company_name || "",
                         },
                         {
                             objectTypeId: "0-1",
@@ -113,7 +116,7 @@ export async function createContactData(
                         {
                             objectTypeId: "0-1",
                             name: "web_site_url",
-                            value: rawFormData.web_site_url,
+                            value: rawFormData.web_site_url || "",
                         },
                         {
                             objectTypeId: "0-1",
