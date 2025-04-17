@@ -7,7 +7,6 @@ export interface ContactFormState {
 
 export async function createContactData(
     _prevState: ContactFormState,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     formData: FormData
 ): Promise<ContactFormState> {
     const rawFormData = {
@@ -21,6 +20,13 @@ export async function createContactData(
 
     // Validate reCAPTCHA token
     try {
+        if (!rawFormData.recaptcha_token) {
+            return {
+                status: "error",
+                message: "reCAPTCHAの検証に失敗しました。",
+            };
+        }
+
         const recaptchaRes = await fetch(
             "https://www.google.com/recaptcha/api/siteverify",
             {
@@ -31,6 +37,11 @@ export async function createContactData(
                 body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${rawFormData.recaptcha_token}`,
             }
         );
+
+        if (!recaptchaRes.ok) {
+            throw new Error("reCAPTCHA verification failed");
+        }
+
         const recaptchaData = await recaptchaRes.json();
 
         if (!recaptchaData.success || recaptchaData.score < 0.5) {
@@ -47,6 +58,7 @@ export async function createContactData(
         };
     }
 
+    // Validate form data
     if (!rawFormData.firstname) {
         return {
             status: "error",
@@ -72,6 +84,7 @@ export async function createContactData(
         };
     }
 
+    // Submit to HubSpot
     try {
         const result = await fetch(
             `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTAL_ID}/${process.env.HUBSPOT_FORM_ID}`,
@@ -112,9 +125,9 @@ export async function createContactData(
             }
         );
 
-        console.log("HubSpot response status:", result.status);
-        const responseBody = await result.text();
-        console.log("HubSpot response body:", responseBody);
+        if (!result.ok) {
+            throw new Error("HubSpot submission failed");
+        }
 
         return { status: "success", message: "SUCCESS" };
     } catch (error) {
