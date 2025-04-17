@@ -179,6 +179,8 @@
 
 .recaptchaNotice a {
     color: #cccccc;
+    display: inline-block;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 900px) {
