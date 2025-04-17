@@ -1,48 +1,8 @@
+import Image from "next/image";
 import styles from "./page.module.css";
+import Link from "next/link";
 import Header from "../_components/Header";
 import Footer from "../_components/Footer";
-import type { Metadata } from "next";
-import ServiceContent from "./_components/ServiceContent";
-
-export const metadata: Metadata = {
-    title: "Cohere.img | Service",
-    description:
-        "Cohere.imgが提供するサービスをご紹介します。Webデザイン、ロゴデザイン、グラフィックデザインなど。",
-    keywords: [
-        "Webデザイン",
-        "ロゴデザイン",
-        "グラフィックデザイン",
-        "クリエイティブ",
-        "デザインスタジオ",
-        "デザイン",
-        "フリーランス",
-        "フリーランスデザイナー",
-        "秋田県",
-        "Web制作",
-        "Webデザイン",
-        "ロゴデザイン",
-    ],
-    openGraph: {
-        title: "Cohere.img | Service",
-        description:
-            "Cohere.imgが提供するサービスをご紹介します。Webデザイン、ロゴデザイン、グラフィックデザインなど。",
-        images: [
-            {
-                url: "/default-1200x630.png",
-                width: 1200,
-                height: 630,
-                alt: "Cohere.img Service",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        images: ["/default-1200x630.png"],
-    },
-    alternates: {
-        canonical: "https://cohere-img.design/service",
-    },
-};
 
 export default function Home() {
     return (

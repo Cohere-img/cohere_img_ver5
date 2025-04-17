@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import styles from "./Header.module.css";
 import Link from "next/link";
-import styles from "./index.module.css";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
