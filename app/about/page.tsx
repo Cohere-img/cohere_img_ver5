@@ -7,6 +7,47 @@ import { addAmbientLight, addDirectionalLight } from "../utils/lights";
 import { createTorus, createCylinder, createGlow } from "../utils/objects";
 import { createFineParticles, animateParticles } from "../utils/particles";
 import Footer from "../_components/Footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Cohere.img | About",
+    description:
+        "Cohere.imgについて。Web制作、デザイン、クリエイティブを通じて、お客様の想いを形にする個人デザインスタジオです。",
+    keywords: [
+        "Webデザイン",
+        "ロゴデザイン",
+        "グラフィックデザイン",
+        "クリエイティブ",
+        "デザインスタジオ",
+        "デザイン",
+        "フリーランス",
+        "フリーランスデザイナー",
+        "秋田県",
+        "Web制作",
+        "Webデザイン",
+        "ロゴデザイン",
+    ],
+    openGraph: {
+        title: "Cohere.img | About",
+        description:
+            "Cohere.imgについて。Web制作、デザイン、クリエイティブを通じて、お客様の想いを形にする個人デザインスタジオです。",
+        images: [
+            {
+                url: "/ogp/about-1200x630.png",
+                width: 1200,
+                height: 630,
+                alt: "Cohere.img About",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        images: ["/ogp/about-1200x630.png"],
+    },
+    alternates: {
+        canonical: "https://cohere-img.design/about",
+    },
+};
 
 export default function Home() {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
