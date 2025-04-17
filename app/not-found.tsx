@@ -24,9 +24,11 @@ export default function NotFound() {
                                 申し訳ありませんが、お探しのページは存在しないか、移動した可能性があります。
                             </p>
                         </div>
-                        <Link href="/" className={styles.homeLink}>
-                            Top Page
-                        </Link>
+                        <div className={`linkBtn ${styles.notFoundLinkBtn}`}>
+                            <Link href="/" className={styles.notFoundAreaLink}>
+                                <span>Top Page</span>
+                            </Link>
+                        </div>
                     </div>
                 </section>
                 <Footer />
