@@ -45,31 +45,6 @@ export const metadata: Metadata = {
         address: false,
         telephone: false,
     },
-    openGraph: {
-        type: "website",
-        locale: "ja_JP",
-        url: "https://cohere-img.design",
-        siteName: "Cohere.img",
-        title: "Cohere.img",
-        description:
-            "Cohere.imgは本質的な魅力を感覚でとらえ、あなたらしい世界観を気持ちを元に構築するデザイナーです。",
-        images: [
-            {
-                url: "/default-1200x630.png",
-                width: 1200,
-                height: 630,
-                alt: "Cohere.img",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Cohere.img",
-        description:
-            "Cohere.imgは本質的な魅力を感覚でとらえ、あなたらしい世界観を気持ちを元に構築するデザイナーです。",
-        images: ["/default-1200x630.png"],
-        creator: "@cohere_img",
-    },
     robots: {
         index: true,
         follow: true,

@@ -24,23 +24,6 @@ export async function generateMetadata(): Promise<Metadata> {
             "Webデザイン",
             "ロゴデザイン",
         ],
-        openGraph: {
-            title: "Cohere.img | Service",
-            description:
-                "Cohere.imgが提供するサービスをご紹介します。Webデザイン、ロゴデザイン、グラフィックデザインなど。",
-            images: [
-                {
-                    url: "/default-1200x630.png",
-                    width: 1200,
-                    height: 630,
-                    alt: "Cohere.img Service",
-                },
-            ],
-        },
-        twitter: {
-            card: "summary_large_image",
-            images: ["/default-1200x630.png"],
-        },
         alternates: {
             canonical: "https://cohere-img.design/service",
         },

@@ -32,23 +32,6 @@ export async function generateMetadata(): Promise<Metadata> {
             "Webデザイン",
             "ロゴデザイン",
         ],
-        openGraph: {
-            title: "Cohere.img | Home",
-            description:
-                "Cohere.imgは本質的な魅力を感覚でとらえ、あなたらしい世界観を気持ちを元に構築するデザイナーです。",
-            images: [
-                {
-                    url: "/default-1200x630.png",
-                    width: 1200,
-                    height: 630,
-                    alt: "Cohere.img Home",
-                },
-            ],
-        },
-        twitter: {
-            card: "summary_large_image",
-            images: ["/default-1200x630.png"],
-        },
         alternates: {
             canonical: "https://cohere-img.design",
         },

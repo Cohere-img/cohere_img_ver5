@@ -4,45 +4,30 @@ import Footer from "../_components/Footer";
 import ContactForm from "../_components/ContactForm";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-    title: "Cohere.img | Contact",
-    description:
-        "Cohere.imgへのお問い合わせはこちらから。Webデザイン、ロゴデザイン、グラフィックデザインなど、お気軽にご相談ください。",
-    keywords: [
-        "Webデザイン",
-        "ロゴデザイン",
-        "グラフィックデザイン",
-        "クリエイティブ",
-        "デザインスタジオ",
-        "デザイン",
-        "フリーランス",
-        "フリーランスデザイナー",
-        "秋田県",
-        "Web制作",
-        "Webデザイン",
-        "ロゴデザイン",
-    ],
-    openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+    return {
         title: "Cohere.img | Contact",
         description:
             "Cohere.imgへのお問い合わせはこちらから。Webデザイン、ロゴデザイン、グラフィックデザインなど、お気軽にご相談ください。",
-        images: [
-            {
-                url: "/default-1200x630.png",
-                width: 1200,
-                height: 630,
-                alt: "Cohere.img Contact",
-            },
+        keywords: [
+            "Webデザイン",
+            "ロゴデザイン",
+            "グラフィックデザイン",
+            "クリエイティブ",
+            "デザインスタジオ",
+            "デザイン",
+            "フリーランス",
+            "フリーランスデザイナー",
+            "秋田県",
+            "Web制作",
+            "Webデザイン",
+            "ロゴデザイン",
         ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        images: ["/default-1200x630.png"],
-    },
-    alternates: {
-        canonical: "https://cohere-img.design/contact",
-    },
-};
+        alternates: {
+            canonical: "https://cohere-img.design/contact",
+        },
+    };
+}
 
 export default function page() {
     return (
