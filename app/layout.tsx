@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import MaskObserverWrapper from "./_components/MaskObserverWrapper";
 import PageTransition from "./_components/PageTransition";
+import GoogleAnalytics from "./_components/GoogleAnalytics";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
                 />
             </head>
             <body className={`${geistSans.variable} ${geistMono.variable}`}>
+                <GoogleAnalytics />
                 <PageTransition>
                     <MaskObserverWrapper>{children}</MaskObserverWrapper>
                 </PageTransition>

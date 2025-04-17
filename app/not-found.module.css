@@ -26,12 +26,15 @@
     color: #1e1e1e;
     font-weight: 400;
     border-bottom: 1px solid #1e1e1e;
+    margin-top: 1.6rem;
+    padding-bottom: 0.8rem;
 }
 
 .description {
     font-size: 1.4rem;
     color: #1e1e1e;
     font-weight: 400;
+    margin-top: 2.4rem;
 }
 
 .homeLink {
