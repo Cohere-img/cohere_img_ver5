@@ -74,7 +74,7 @@ export default function Footer() {
                             </li>
                         </ul>
                     </nav>
-                    <div className={styles.recaptcha - notice}>
+                    <div className={styles.recaptchaNotice}>
                         <p>
                             This site is protected by reCAPTCHA and the Google{" "}
                             <a
