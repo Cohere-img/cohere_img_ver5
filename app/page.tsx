@@ -1,6 +1,5 @@
 "use client";
-import { useEffect } from "react"; // ← useEffectをインポート
-import Image from "next/image";
+import { useEffect } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Header from "./_components/Header";
