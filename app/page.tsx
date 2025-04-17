@@ -18,18 +18,16 @@ export async function generateMetadata(): Promise<Metadata> {
         description:
             "Cohere.imgは本質的な魅力を感覚でとらえ、あなたらしい世界観を気持ちを元に構築するデザイナーです。",
         keywords: [
+            "フリーランス",
+            "フリーランスWebデザイナー",
+            "秋田県",
+            "Web制作",
             "Webデザイン",
             "ロゴデザイン",
             "グラフィックデザイン",
             "クリエイティブ",
             "デザインスタジオ",
             "デザイン",
-            "フリーランス",
-            "フリーランスデザイナー",
-            "秋田県",
-            "Web制作",
-            "Webデザイン",
-            "ロゴデザイン",
         ],
         alternates: {
             canonical: "https://cohere-img.design",
