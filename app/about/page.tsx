@@ -25,8 +25,6 @@ export async function generateMetadata(): Promise<Metadata> {
             "フリーランスデザイナー",
             "秋田県",
             "Web制作",
-            "Webデザイン",
-            "ロゴデザイン",
         ],
         alternates: {
             canonical: "https://cohere-img.design/about",

@@ -6,6 +6,30 @@ import Header from "../_components/Header";
 import WorksList from "../_components/WorksList/index";
 import Footer from "../_components/Footer";
 import { client, Work } from "../../libs/client";
+import type { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+    return {
+        title: "Cohere.img | Works",
+        description:
+            "Cohere.imgの制作実績をご紹介します。Webデザイン、ロゴデザイン、グラフィックデザインなど。",
+        keywords: [
+            "Webデザイン",
+            "ロゴデザイン",
+            "グラフィックデザイン",
+            "クリエイティブ",
+            "デザインスタジオ",
+            "デザイン",
+            "フリーランス",
+            "フリーランスデザイナー",
+            "秋田県",
+            "Web制作",
+        ],
+        alternates: {
+            canonical: "https://cohere-img.design/works",
+        },
+    };
+}
 
 export default function Home() {
     const [works, setWorks] = useState<Work[] | null>(null); // worksデータの状態
