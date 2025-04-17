@@ -16,7 +16,36 @@ export async function createContactData(
         email: formData.get("email") as string,
         web_site_url: formData.get("web_site_url") as string,
         comment: formData.get("comment") as string,
+        recaptcha_token: formData.get("recaptcha_token") as string,
     };
+
+    // Validate reCAPTCHA token
+    try {
+        const recaptchaRes = await fetch(
+            "https://www.google.com/recaptcha/api/siteverify",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${rawFormData.recaptcha_token}`,
+            }
+        );
+        const recaptchaData = await recaptchaRes.json();
+
+        if (!recaptchaData.success || recaptchaData.score < 0.5) {
+            return {
+                status: "error",
+                message: "不正なアクセスの可能性があります。",
+            };
+        }
+    } catch (error) {
+        console.error("reCAPTCHA verification failed:", error);
+        return {
+            status: "error",
+            message: "reCAPTCHAの検証に失敗しました。",
+        };
+    }
 
     if (!rawFormData.firstname) {
         return {
